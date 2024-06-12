@@ -30,6 +30,14 @@ public class UserServiceImpl implements UserService{
                 .orElseThrow(() -> new ResourceNotFoundException("No User with id: " + id));
         return users;
     }
+
+    @Override
+    public Users getUserByUid(String uid) throws ResourceNotFoundException {
+        Users users = userRepo.findByUid(uid)
+                .orElseThrow(() -> new ResourceNotFoundException("No User with uid: " + uid));
+        return users;
+    }
+
     @Override
     public List<Users> getAll() {
         return userRepo.findAll();

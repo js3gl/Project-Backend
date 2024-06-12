@@ -38,7 +38,11 @@ public class UserController {
         Users users = userService.getUserById(id);
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
-
+    @GetMapping("uid/{uid}") // Fix this
+    public ResponseEntity<Users> getUserByUid(@PathVariable String uid) {
+        Users users = userService.getUserByUid(uid);
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
     @PutMapping("{id}")
     public ResponseEntity<Object> updateUser(@PathVariable("id") Integer id, @RequestBody Users usersDetails) {
         try {
